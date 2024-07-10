@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .gallery img {
+            width: 30%;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .buy-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .buy-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery">
+    <img src="image1.jpg" alt="Image 1" onclick="openModal('Image 1', 100)">
+    <img src="image2.jpg" alt="Image 2" onclick="openModal('Image 2', 150)">
+    <img src="image3.jpg" alt="Image 3" onclick="openModal('Image 3', 200)">
+    <img src="image4.jpg" alt="Image 4" onclick="openModal('Image 4', 250)">
+    <img src="image5.jpg" alt="Image 5" onclick="openModal('Image 5', 300)">
+    <img src="image6.jpg" alt="Image 6" onclick="openModal('Image 6', 350)">
+    <img src="image7.jpg" alt="Image 7" onclick="openModal('Image 7', 400)">
+    <img src="image8.jpg" alt="Image 8" onclick="openModal('Image 8', 450)">
+    <img src="image9.jpg" alt="Image 9" onclick="openModal('Image 9', 500)">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modal-text"></p>
+        <button class="buy-btn" onclick="buyImage()">Buy</button>
+    </div>
+</div>
+
+<script>
+    let selectedImage = '';
+    let selectedPrice = 0;
+
+    function openModal(imageName, price) {
+        selectedImage = imageName;
+        selectedPrice = price;
+        document.getElementById('modal-text').innerText = 'Do you want to buy ' + imageName + ' for $' + price + '?';
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    function buyImage() {
+        window.location.href = `buy.html?name=${selectedImage}&price=${selectedPrice}`;
+    }
+</script>
+
+</body>
+</html>

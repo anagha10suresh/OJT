@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="image-name"></h1>
+<p id="image-price"></p>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const imageName = urlParams.get('name');
+    const imagePrice = urlParams.get('price');
+
+    document.getElementById('image-name').innerText = `You are buying: ${imageName}`;
+    document.getElementById('image-price').innerText = `Price: $${imagePrice}`;
+</script>
+
+</body>
+</html>
